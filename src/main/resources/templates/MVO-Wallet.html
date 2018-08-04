@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+<h3><a href="mailto:#">品牌商</a>
+    <small>>>我的钱包</small>
+
+</h3>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>欢迎来到变强的地方！</h2>
+            <br>
+        <img th:src="@{/111.jpg}" width="200px" height="220px">
+            <br>
+            <br>
+            <br>
+    <p>你现在的余额为:</p>
+    <label th:text="${yue}"></label>
+            <br>
+        <div class="col-md-5"><a  th:href="@{'/MVowithdraw/'+${session.myId}}" class="btn btn-primary btn-lg btn-block"  role="button">提现</a></div>
+
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

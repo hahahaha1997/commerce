@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        .box3{
+            background: url("/images/3.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box3">
+<h3><a href="mailto:#">管理员</a>
+    <small>>>修改一级分类</small>
+
+</h3>
+<hr />
+
+<form class="form-horizontal" th:action="@{/ConfirmUpdateClass}"  th:method="post">
+    <input type="hidden" name="id" th:value="${session.changefirst.getClassifyId()}">
+    <div class="form-group">
+        <label class="col-md-2 control-label">一级分类名称</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="classify" th:placeholder="${session.changefirst.getClassifyDescription()}">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a><button  class="btn btn-default">提交修改</button></a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

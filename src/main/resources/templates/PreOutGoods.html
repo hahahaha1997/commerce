@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            借卖方查询推送
+        </title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        
+        <meta charset="UTF-8"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <style type="text/css">
+            .box2{
+                background:url("/images/2.jpg");
+                background-repeat: no-repeat;
+            }
+        </style>
+    </head>
+    <body class="box2">
+      <h3><a href="mailto:#">借卖方</a><small>>>查询推送</small></h3>
+        <hr />
+
+
+
+        <div class="container-fluid">
+       
+            <div class="row">
+                <div class=" col-md-12">
+
+                    
+                    <div class="panel panel-primary">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">
+                            推送新商品
+                        </div>
+                        <div>
+                                <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>    &nbsp;&nbsp;&nbsp;商品名</th>
+                                            <!--<th>品牌商</th>-->
+
+                                   
+                                            <th>平台价格</th>
+                                            <th>库存量</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr th:each="PG:${session.preoutgood}">
+
+
+                                            <td th:text="${PG.getGoodName()}"></td>
+                                            <!--<td th:text="${PG.getBranderId().getBranderChineseName()}"></td>-->
+
+                                            <td th:text="${PG.getGoodPrice()}"></td>
+                                            <td th:text="${PG.getGoodStock()}"></td>
+                                         
+
+                                            <td>
+                                                    <a th:href="@{'/watchmore/'+${PG.getGoodId()}}">
+                                                    <button type="button" class="btn btn-info">查看详细信息与上架</button>
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                
+                        </div>
+                              
+                        
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            
+
+        
+
+
+
+        <script>
+            $('#myTabs a').click(function (e) {
+               e.preventDefault()
+               $(this).tab('show')
+            })
+
+            $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+            $('#myTabs a:first').tab('show') // Select first tab
+            $('#myTabs a:last').tab('show') // Select last tab
+            $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+        </script>
+    </body>
+</html>

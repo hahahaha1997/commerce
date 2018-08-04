@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+
+        <h3><a href="mailto:#">品牌商 </a>
+            <small>>><a href="xxx">我的信息</a></small>
+            <small>>>信息修改</small>
+        </h3>
+        <hr />
+
+        <form  th:action="@{/ConfirmUpdateBrander}"  th:method="post">
+
+            <input type="hidden" name="branderId" th:value="${session.brander_update.getBranderId()}">
+            <input type="hidden" name="breanderCreatTime" th:value="${session.brander_update.getBreanderCreatTime()}">
+
+            <input type="hidden" name="branderLoginName" th:value="${session.brander_update.getBranderLoginName()}">
+            <input type="hidden" name="branderLoginStatus" th:value="${session.brander_update.getBranderLoginStatus()}">
+            <input type="hidden" name="branderUploadStatus" th:value="${session.brander_update.getBranderUploadStatus()}">
+            <!--<input type="hidden" name="brenderWalletId" th:value="${session.brander_update.getwa()}">-->
+            <input type="hidden" name="branderWalletPwd" th:value="${session.brander_update.getBranderWalletPwd()}">
+            <input type="hidden" name="branderPwd" th:value="${session.brander_update.getBranderPwd()}">
+
+            <div class="panel panel-primary">
+            <div class="panel-heading">公司中文名</div>
+            <div class="panel-body">
+                        <input type="text" name="branderChineseName" class="form-control" id="inputEmail3" placeholder="公司中文名" th:value="${session.brander_update.getBranderChineseName()}">
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">公司英文名</div>
+            <div class="panel-body">
+                <input type="text" name="branderEnglishName" class="form-control"  placeholder="公司英文名" th:value="${session.brander_update.getBranderEnglishName()}">
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">公司简介</div>
+            <div class="panel-body">
+                <input type="text" name="branderIntorduction" class="form-control"  placeholder="公司简介" th:value="${session.brander_update.getBranderIntorduction()}">
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">公司法人</div>
+            <div class="panel-body">
+                <input type="text" name="branderPhone" class="form-control"  placeholder="联系方式" th:value="${session.brander_update.getBranderPhone()}">
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">公司法人</div>
+            <div class="panel-body">
+                <input type="text" name="branderLawMan" class="form-control"  placeholder="公司法人" th:value="${session.brander_update.getBranderLawMan()}">
+            </div>
+        </div>
+        <div  align="center">
+            <a  >
+                <button class="btn btn-danger">提交信息</button>
+            </a>
+        </div>
+            <br>
+        </form>
+</body>
+</html>

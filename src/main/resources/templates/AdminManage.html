@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        .box3{
+            background: url("/images/3.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box3">
+<h3><a href="mailto:#">管理员</a>
+    <small>>>操作审核</small>
+
+</h3>
+<hr />
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#business" id="business-tab" role="tab" data-toggle="tab" aria-controls="business" aria-expanded="true">品牌商</a><div></div></li>
+                    <li role="presentation" class=""><a href="#borrower" role="tab" id="borrower-tab" data-toggle="tab" aria-controls="borrower" aria-expanded="false">借卖方</a></li>
+                    <li role="presentation" class=""><a href="#admin" role="tab" id="admin-tab" data-toggle="tab" aria-controls="admin" aria-expanded="false">管理员</a></li>
+                    <li role="presentation" class=""><a href="#classify" role="tab" id="classify-tab" data-toggle="tab" aria-controls="classify" aria-expanded="false">分类管理</a></li>
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="business" aria-labelledby="business-tab">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-2">品牌商</th>
+                                <th class="col-md-1">登陆状态</th>
+                                <th class="col-md-1">发布状态</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="Brander:${session.branders}">
+                                <td th:text="${Brander.getBranderChineseName()}"></td>
+                                <td  th:text="${Brander.getBranderLoginStatus()}"></td>
+                                <td  th:text="${Brander.getBranderUploadStatus()}"></td>
+                                <td ><div class="btn-group" role="group">
+                                    <a th:href="@{'/loginchange/'+${Brander.getBranderId()}}" ><button  type="button" class="btn btn-success">允许登录</button></a>
+                                    <a th:href="@{'/loginchange2/'+${Brander.getBranderId()}}"><button   type="button" class="btn btn-warning">禁止登录</button></a>
+                                    <a th:href="@{'/loginchange3/'+${Brander.getBranderId()}}" ><button  type="button" class="btn btn-success">允许发布新商品</button></a>
+                                    <a th:href="@{'/loginchange4/'+${Brander.getBranderId()}}"><button   type="button" class="btn btn-warning">禁止发布新商品</button></a>
+                                </div></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="borrower" aria-labelledby="profile-tab">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-2">供货商</th>
+                                <th class="col-md-1">登陆状态</th>
+                                <th class="col-md-1">发布状态</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="Brander:${session.borrowers}">
+                                <td th:text="${Brander.getBorrowerName()}"></td>
+                                <td  th:text="${Brander.getBorrowerLoginStatus()}"></td>
+                                <td  th:text="${Brander.getBorrowerUploadStatus()}"></td>
+                                <td class=" "><div class="btn-group" role="group">
+                                    <a th:href="@{'/loginchange5/'+${Brander.getBorrowerId()}}"> <button type="button" class="btn btn-success">允许登录</button></a>
+                                    <a th:href="@{'/loginchange6/'+${Brander.getBorrowerId()}}"> <button type="button" class="btn btn-warning">禁止登录</button></a>
+                                    <a th:href="@{'/loginchange7/'+${Brander.getBorrowerId()}}"> <button type="button" class="btn btn-success">允许上架新商品</button></a>
+                                    <a th:href="@{'/loginchange8/'+${Brander.getBorrowerId()}}"> <button type="button" class="btn btn-warning">禁止上架新商品</button></a>
+                                </div></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="admin" aria-labelledby="profile-tab">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-4">管理员</th>
+                                <th class="col-md-4">当前权限</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="Admin:${session.admins}">
+                                <td th:text="${Admin.getAdminName()}"></td>
+                                <td th:text="${Admin.getAdminPower()}">当前权限</td>
+                                <td class=" "><div class="btn-group" role="group">
+                                    <a th:href="@{'/addpower/'+${Admin.getAdminId()}}" ><button type="button" class="btn btn-success">增加权限</button></a>
+                                    <a th:href="@{'/addpower2/'+${Admin.getAdminId()}}"><button type="button" class="btn btn-warning">减少权限</button></a>
+
+                                </div></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="classify" aria-labelledby="profile-tab">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-6">一级分类</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="SC:${session.class}">
+                                <td th:text="${SC.getClassifyDescription()}">一级分类的名称</td>
+                                <td ><div class="btn-group" role="group">
+                                    <a th:href="@{'/changeClass/'+${SC.getClassifyId()}}"><button type="button" class="btn btn-success">修改</button></a>
+                                    <a th:href="@{'/alterClass/'+${SC.getClassifyId()}}"><button type="button" class="btn btn-warning">删除</button></a>
+                                </div></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <hr>
+                        <a th:href="@{/addNewClass}"> <button type="button" class="btn btn-success">增加新的一级分类</button></a>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-3">二级分类</th>
+                                <th class="col-md-3">父类名称</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="SC2:${session.class2}">
+                                <td th:text="${SC2.getClassifyDescription()}">二级分类的名称</td>
+                                <td th:text="${session.server.findById(SC2.getClassifyParentId()).getClassifyDescription()}">二级分类的父类名称</td>
+                                <td class=" "><div class="btn-group" role="group">
+                                    <a th:href="@{'/changeClass2/'+${SC2.getClassifyId()}}"><button type="button" class="btn btn-success">修改</button></a>
+                                    <a th:href="@{'/alterClass/'+${SC2.getClassifyId()}}"><button type="button" class="btn btn-warning">删除</button></a>
+                                </div></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <hr>
+                        <a th:href="@{/addNewClass2}"><button type="button" class="btn btn-success">增加新的二级分类</button></a>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-3">三级分类</th>
+                                <th class="col-md-3">父类名称</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="SC3:${session.class3}">
+                                <td th:text="${SC3.getClassifyDescription()}">三级分类的名称</td>
+                                <td th:text="${session.server.findById(SC3.getClassifyParentId()).getClassifyDescription()}">三级分类的父类名称</td>
+                                <td ><div class="btn-group" role="group">
+                                    <a th:href="@{'/changeClass3/'+${SC3.getClassifyId()}}"><button type="button" class="btn btn-success">修改</button></a>
+                                    <a th:href="@{'/alterClass/'+${SC3.getClassifyId()}}"><button type="button" class="btn btn-warning">删除</button></a>
+                                </div></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <hr>
+                        <a th:href="@{/addNewClass3}"><button type="button" class="btn btn-success">增加新的三级分类</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            借卖方的信息
+        </title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        
+        <meta charset="UTF-8"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        <style type="text/css">
+            .box2{
+                background:url("/images/2.jpg");
+                background-repeat: no-repeat;
+            }
+        </style>
+    </head>
+    <body th:each="Borrower:${session.borrows}" class="box2">
+        <h3><a href="mailto:#">借卖方</a><small>>>我的信息</small></h3>
+        <hr />
+
+
+        <div class="col-lg-offset-1 col-lg-10">
+                <div class="panel panel-info">
+                    <div class="panel-heading">借卖方ID</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerId()}">
+                        
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">借卖方名称</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerName()}">
+                       
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">网站描述</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerDec()}">
+                        
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">联络方式</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerPhone()}">
+                        
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading" >网站名称</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerWeb()}">
+                        
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">登陆名称</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerLoginName()}">
+                        
+                    </div>
+                </div>
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading">登陆状态</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerLoginStatus()}">
+                        
+                    </div>
+                </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">发布状态</div>
+                <div class="panel-body" th:text="${Borrower.getBorrowerUploadStatus()}">
+
+                </div>
+            </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">注册时间</div>
+                    <div class="panel-body" th:text="${Borrower.getBorrowerTime()}">
+                        
+                    </div>
+                </div>
+
+            <div  align="center">
+                <a  th:href="@{'/updateBorrower/'+${Borrower.getBorrowerId()}}">
+                    <button class="btn btn-danger">修改信息</button>
+                </a>
+            </div>
+                <br>
+            
+
+            
+
+
+        </div>
+
+
+        
+
+
+
+        <script>
+            $('#myTabs a').click(function (e) {
+               e.preventDefault()
+               $(this).tab('show')
+            })
+
+            $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+            $('#myTabs a:first').tab('show') // Select first tab
+            $('#myTabs a:last').tab('show') // Select last tab
+            $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+        </script>
+    </body>
+</html>

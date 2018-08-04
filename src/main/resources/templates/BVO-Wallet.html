@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .box2{
+            background:url("/images/2.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box2">
+
+<h3><a href="mailto:#">借卖方</a>
+    <small>>>我的钱包</small>
+
+</h3>
+<hr />
+<div class="container">
+    <div class="row">
+
+        <div class="jumbotron">
+            <h2>欢迎来到变强的地方！</h2>
+            <br>
+            <img th:src="@{/111.jpg}" width="200px" height="220px">
+            <br>
+            <br>
+            <br>
+            <p>你现在的余额为:</p>
+            <label th:text="${yue}"> </label>
+            <p>点击下方按钮，你可以将钱提现为现实货币,或者向钱包当中充值货币</p>
+            <div class="col-md-6"><a class="btn btn-primary btn-lg btn-block" th:href="@{'/BVowithdraw/'+${session.br_id}}" role="button">提现</a></div>
+            <div class="col-md-6"><a class="btn btn-success btn-lg btn-block" th:href="@{'/Recharge/'+${session.br_id}}" role="button">充值</a></div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<script>
+
+    function submitFormOne2(name) {
+        var form=document.getElementById(name);
+        form.submit();
+    }
+    function getvalue2() {
+        document.getElementById("in").valueOf(document.getElementById("c"));
+    }
+
+</script>
+
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+
+    <h3><a href="mailto:#">品牌商 </a>
+        <small>>><a href="xxx">品牌信息</a></small>
+        <small>>>品牌信息</small>
+        <small>>>品牌商品信息</small>
+        <small>>>品牌商品添加</small>
+    </h3>
+    <hr />
+    <div class="col-lg-offset-1 col-lg-10">
+
+        <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">商品类型</div>-->
+            <!--<div class="panel-body">-->
+                <!--<select class="form-control"  >-->
+                    <!--<option th:each="Cs:${session.class}" th:value="Cs." th:text="">此处有多级分类</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">商品类型</div>
+            <div class="panel-body">
+
+                <form th:action="@{/addClass2}" th:method="post" id="one" >
+                    <select name="idd" class="form-control" >
+                        <option  onclick="submitFormOne2('one')" th:each="PP:${session.ppp}" th:value="${PP.getClassifyId()}" th:text="${PP.getClassifyDescription()}"></option>
+                    </select>
+                </form>
+
+                <form th:action="@{/addOne2}" th:method="post" id="two">
+                    <select name="idd" class="form-control" id="b">
+                        <option onclick="submitFormOne2('two')" th:each="second:${qqq}" th:value="${second.getClassifyId()}" th:text="${second.getClassifyDescription()}"></option>
+                    </select>
+                </form>
+                <form th:action="@{/addfin2}" th:method="post" id="three">
+                    <select name="idd" class="form-control" id="c">
+                        <option  onclick="submitFormOne2('three')" th:each="third:${ttt}" th:value="${third.getClassifyId()}" th:text="${third.getClassifyDescription()}"></option>
+                    </select>
+                </form>
+
+            </div>
+        </div>
+
+
+        <form th:method="post"  th:action="@{/submitAdd}" >
+        <!--<input type="hidden" th:value="1" name="goodId">-->
+        <!--<input type="hidden" th:value="1" name="ClassificationId">-->
+        <!--<input type="hidden" th:value="1" name="goodImg">-->
+        <input type="hidden" th:value="${session.myId}" name="branderId">
+        <!--<input type="hidden" th:value="1" name="borrowerId">-->
+        <!--<input type="hidden" th:value="1" name="goodClassifyId">-->
+
+            <input type="hidden" th:value="${session.class_id}" name="goodClassifyId"/>
+
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading">品牌</div>
+            <div class="panel-body" >
+                <select  name="brandId" >
+                    <option th:each="Brands:${session.brands}" th:value="${Brands.getBrandId()}" th:text="${Brands.getBrandChineseName()}">品牌1</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading">商品名</div>
+            <div class="panel-body">
+                <input type="text"  class="form-control"  placeholder="商品名"  name="goodName">
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">建议零售价</div>
+            <div class="panel-body">
+                <input type="text"  class="form-control"  placeholder="建议零售价"  name="goodAdvicePrice">
+            </div>
+        </div>
+        <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">创建人</div>-->
+            <!--<div class="panel-body">-->
+                <!--<input type="text"  class="form-control"  placeholder="创建人"  name="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">创建时间</div>-->
+            <!--<div class="panel-body">-->
+                <!--<input type="text"  class="form-control"  placeholder="创建时间"  name="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">备注</div>-->
+            <!--<div class="panel-body">-->
+                <!--<form>-->
+                    <!--<textarea   class="form-control" placeholder="备注" rows="3"   name=""></textarea>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <div class="panel panel-info">
+        <div class="panel-heading">状态</div>
+        <div class="panel-body">
+            <input type="text"  class="form-control"  placeholder="状态"  name="goodStatus">
+        </div>
+    </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">进价</div>
+            <div class="panel-body">
+                <input type="text"  class="form-control"  placeholder="进价"  name="goodPrice">
+            </div>
+        </div>
+        <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">补货期</div>-->
+            <!--<div class="panel-body">-->
+                <!--<input type="text"  class="form-control"  placeholder="补货期" th:value="" name="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="panel panel-info">
+            <div class="panel-heading">库存</div>
+            <div class="panel-body">
+                <input type="text"  class="form-control"  placeholder="库存"  name="goodStock">
+            </div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">库存预警设置</div>
+            <div class="panel-body">
+                <input type="text"  class="form-control"  placeholder="库存预警设置" name="goodWarning">
+            </div>
+        </div>
+
+        <div align="center">
+            <a><button class="btn btn-danger" onclick="getvalue2()">提交商品</button></a>
+        </div>
+            <br>
+
+</form>
+    </div>
+</body>
+</html>

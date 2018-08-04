@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+<h3><a href="mailto:#">品牌商</a>
+    <small>>>我要提现</small>
+
+</h3>
+<hr />
+
+<form class="form-horizontal " th:action="@{/confirmWithDraw_brander}" th:method="post">
+    <br>
+    <br>
+    <br>
+    <div class="form-group">
+        <label  class="col-md-2 control-label">提现金额</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="yue" placeholder="金额">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label  class="col-md-2 control-label">提现密码</label>
+        <div class="col-md-6">
+            <input type="password" class="form-control" name="pass"  placeholder="密码">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <a> <button  class="btn btn-success btn-block">提现</button></a>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

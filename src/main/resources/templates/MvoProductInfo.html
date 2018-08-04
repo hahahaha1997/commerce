@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+<h3>
+    <a href="mailto:#">品牌商 </a>
+    <small>>><a href="hhh"> 商品信息</a></small>
+    <small>>>商品详细信息</small>
+</h3>
+    <hr />
+    <div class="col-lg-offset-1 col-lg-10">
+        <div class="panel panel-info">
+            <div class="panel-heading">商品ID</div>
+            <div class="panel-body" th:text="${session.detail.getGoodId()}">
+                4396
+            </div>
+        </div>
+        <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">商品类型</div>-->
+            <!--<div class="panel-body" th:text="${session.detail}">-->
+                <!--Panel content-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="panel panel-info">
+            <div class="panel-heading">品牌名</div>
+            <div class="panel-body" th:text="${session.detail.getBrandId().getBrandChineseName()}">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">品牌商名</div>
+            <div class="panel-body" th:text="${session.detail.getBranderId().getBranderChineseName()}">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">商品名</div>
+            <div class="panel-body" th:text="${session.detail.getGoodName()}">
+                Panel content
+            </div>
+        </div>
+        <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">保修期</div>-->
+            <!--<div class="panel-body" th:text="">-->
+                <!--Panel content-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="panel panel-danger">
+            <div class="panel-heading">建议零售价</div>
+            <div class="panel-body" th:text="${session.detail.getGoodAdvicePrice()}">
+                dddd
+            </div>
+        </div>
+        <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">创建人</div>-->
+            <!--<div class="panel-body" th:text="">-->
+                <!--Panel content-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">创建时间</div>-->
+            <!--<div class="panel-body" th:text="">-->
+                <!--Panel content-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">备注</div>-->
+            <!--<div class="panel-body" th:text="">-->
+                <!--Panel content-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="panel panel-danger">
+            <div class="panel-heading">状态</div>
+            <div class="panel-body" th:text="${session.detail.getGoodStatus()}">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">进价</div>
+            <div class="panel-body" th:text="${session.detail.getGoodPrice()}">
+                Panel content
+            </div>
+        </div>
+        <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">补货期</div>-->
+            <!--<div class="panel-body" th:text="">-->
+                <!--Panel content-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="panel panel-info">
+            <div class="panel-heading">库存</div>
+            <div class="panel-body" th:text="${session.detail.getGoodStock()}">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">库存预警设置</div>
+            <div class="panel-body" th:text="${session.detail.getGoodWarning()}">
+                Panel content
+            </div>
+        </div>
+        <div align="center">
+            <a th:href="@{'/change/'+${session.detail.getGoodId()}}"><button type="button" class="btn btn-danger" >修改信息</button></a>
+        </div>
+        <br>
+    </div>
+</body>
+</html>

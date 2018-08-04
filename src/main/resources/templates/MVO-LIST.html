@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+<h3><a href="mailto:#">品牌商</a>
+    <small>>>我的订单</small>
+
+</h3>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th >顾客名</th>
+                    <th >创建时间</th>
+                    <th>支付时间</th>
+                    <th>收货地址</th>
+                    <th>支付方式</th>
+                    <th>总费用</th>
+                    <th>订单状态</th>
+                    <th>订单明细</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Ords:${session.order_brander}">
+                    <td th:text="${Ords.getBorrowerId().getBorrowerName()}">卢本伟</td>
+                    <td th:text="${Ords.getNutOrderFormCreateTime()}">2015-05-05</td>
+                    <td th:text="${Ords.getNutOrderFormPayTime()}">2015-05-05</td>
+                    <td th:text="${Ords.getShippingAddressId().getShippingAddress()}">开挂大道29杀号斗鱼宿舍</td>
+                    <td th:text="${Ords.getPayId().getPayname()}">支付宝</td>
+                    <td th:text="${Ords.getNutOrderFormTotalPrice()}">5000000</td>
+                    <td th:text="${Ords.getNutOrderFormStatus()}">待收货</td>
+                    <td>
+                        <a th:href="@{'/Orderinfo_brander/'+${Ords.getNutOrderFormId()}}"><button type="button" class="btn btn-primary">订单明细</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

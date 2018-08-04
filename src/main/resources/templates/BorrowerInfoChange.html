@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            借卖方信息信息修改
+        </title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        
+        <meta charset="UTF-8"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <style type="text/css">
+            .box2{
+                background:url("/images/2.jpg");
+                background-repeat: no-repeat;
+            }
+        </style>
+    </head>
+    <body class="box2">
+        <h3><a href="mailto:#">借卖方</a>
+            <small>>>我的信息</small>
+            <small>>>修改信息</small>
+        </h3>
+        <hr />
+
+        <form th:action="@{/ConfirmUpdateBorrower}"  th:method="post">
+
+
+
+            <input type="hidden" class="form-control" name="borrowerWalletPwd" th:value="${session.borrower_update.getBorrowerWalletPwd()}">
+
+             <div class="col-lg-offset-1 col-lg-10">
+                 <div class="panel panel-info">
+                        <div class="panel-heading">借卖方ID</div>
+
+                     <input class="form-control"  name="borrowerId" readonly="readonly"  th:value="${session.borrower_update.getBorrowerId()}">
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">借卖方名称</div>
+                    <input class="form-control" name="borrowerName" th:value="${session.borrower_update.getBorrowerName()}">
+
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">网站描述</div>
+                    <input class="form-control" name="borrowerDec" th:value="${session.borrower_update.getBorrowerDec()}">
+
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">联络方式</div>
+                    <input class="form-control"  name="borrowerPhone" th:value="${session.borrower_update.getBorrowerPhone()}">
+
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">网站名称</div>
+                    <input class="form-control" name="borrowerWeb"  th:value="${session.borrower_update.getBorrowerWeb()}">
+
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">登陆名称</div>
+                    <input class="form-control" name="borrowerLoginName"  th:value="${session.borrower_update.getBorrowerLoginName()}">
+
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">登陆密码</div>
+                    <input class="form-control"  name="borrowerPwd" th:value="${session.borrower_update.getBorrowerPwd()}">
+
+                </div>
+                <!--<div class="panel panel-danger">-->
+                    <!--<div class="panel-heading">状态</div>-->
+                    <!--<input class="form-control" name="borrowerStatus"  readonly="readonly" th:value="${session.borrower_update.getBorrowerStatus()}">-->
+
+                <!--</div>-->
+                <div class="panel panel-info">
+                    <div class="panel-heading">注册时间</div>
+                    <input class="form-control" name="borrowerTime"    th:value="${session.borrower_update.getBorrowerTime()}">
+
+                </div>
+
+            <div  align="center">
+                <a  >
+                    <button class="btn btn-danger">提交信息</button>
+                </a>
+            </div>
+                 <br>
+
+            
+        </div>
+        </form>
+
+    </body>
+</html>

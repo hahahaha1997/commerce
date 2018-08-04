@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var btexts = $('.btext');
+            var gcs = $('.gc');
+            for (var i = 0; i < btexts.length; i++) {
+                if ($(gcs[i]).html() == '已上架') {
+                    $(btexts[i]).html('下架');
+                }
+                if ($(gcs[i]).html() == '已下架') {
+                    $(btexts[i]).html('上架');
+                }
+            }
+        })
+    </script>
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+
+</head>
+<body class="box1">
+    <h3><a href="mailto:#">品牌商 </a>
+        <small>>>品牌信息</small>
+    </h3>
+    <hr/>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-offset-0 col-lg-12">
+                <div class="panel panel-primary">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        品牌总表
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                        <div class="alert alert-success">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="exampleInputName2">品牌搜索：</label>
+                                    <input type="text" class="form-control" id="exampleInputName2" placeholder="品牌信息">
+                                </div>
+                                <button type="submit" class="btn btn-default">搜索</button>
+                            </form>
+                        </div>
+                        </p>
+                        <table class="table table-hover" id="table">
+                            <thead>
+                            <tr>
+                                <th width="200">所属公司</th>
+                                <th>品牌名称（英文）</th>
+                                <th>品牌名称（中文）</th>
+                                <th>公司LOGO</th>
+                                <th>创建人</th>
+                                <th>创建时间</th>
+                                <th>状态</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--<tr th:each="Student:${stus}">
+                                <td th:text="${Student.stuID}" >aehyok</td>
+                                <td th:text="${Student.stuName}" >leo</td>
+                                <td th:text="${Student.stuPwd}" >@aehyok</td>
+                                <td th:text="${Student.stuPhone}" >leo</td>
+                                <td th:text="${Student.getStuAddress()}" >@aehyok</td>
+                                <td th:text="${Student.getGrade().getGradeName()}" >@aekhyo</td>
+                                <td>
+                                    <a th:href="@{'update/'+${Student.getStuID()}}" title="修改">修改<i class="fa fa-edit text-navy"></i></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a th:href="@{'delete/'+${Student.getStuID()}}" title="删除">删除<i class="fa fa-trash-o text-navy"></i></a>
+                                </td>
+                            </tr>-->
+
+
+                            <tr th:each="Brand_Man:${session.brand_man}">
+                                <td th:text="${session.branders.getBranderChineseName()}">邪恶公司</td>
+                                <td th:text="${Brand_Man.getBrandEnglishName()}">xiee</td>
+                                <td th:text="${Brand_Man.getBrandChineseName()}">邪恶</td>
+                                <td><img th:src="${'http://localhost:8080/images/upload/'+Brand_Man.getGoodImg()}" width="80px" height="80px"> </td>
+                                <td th:text="${Brand_Man.getBrandCreatePeo()}">司徒永斌</td>
+                                <td th:text="${Brand_Man.getBrandCreateTime()}">明天</td>
+                                <td th:text="${Brand_Man.getBrandStatus()}" class="gc">
+                                   迷之状态
+                                </td>
+                                <td>
+                                    <a  th:href="@{'/changeInfo/'+${Brand_Man.getBrandId()}}" ><button class="btn btn-success" >修改</button></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <a th:href="@{'/changeStatus/'+${Brand_Man.getBrandId()}}"><button type="button" class="btn btn-danger btext">下架</button></a>
+                                </td>
+                            </tr>
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <a th:href="@{/addnewbrand}"><button  class="btn btn-info">添加新品牌</button></a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1"/>-->
+    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <!--<script type="text/javascript">-->
+        <!--$(function () {-->
+            <!--var btexts = $('.btext');-->
+            <!--var gcs = $('.gc');-->
+            <!--for (var i = 0; i < btexts.length; i++) {-->
+                <!--if ($(gcs[i]).html() == '已上架') {-->
+                    <!--$(btexts[i]).html('下架');-->
+                <!--}-->
+                <!--if ($(gcs[i]).html() == '已下架') {-->
+                    <!--$(btexts[i]).html('上架');-->
+                <!--}-->
+            <!--}-->
+        <!--})-->
+    <!--</script>-->
+    <!--<meta charset="UTF-8"/>-->
+    <!--<style type="text/css">-->
+        <!--.box1{-->
+            <!--background:url("1.jpg");-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body class="box1">-->
+<!--<h3>-->
+    <!--<a href="mailto:#">品牌商 </a>-->
+    <!--<small>>>商品信息</small>-->
+<!--</h3>-->
+<!--<hr/>-->
+<!--<div class="container">-->
+
+    <!--<div class="row">-->
+        <!--<div class="col-lg-offset-0 col-lg-12">-->
+            <!--<div class="panel panel-primary">-->
+                <!--&lt;!&ndash; Default panel contents &ndash;&gt;-->
+                <!--<div class="panel-heading">-->
+                    <!--商品表-->
+                <!--</div>-->
+                <!--<div class="panel-body">-->
+                    <!--<p>-->
+                    <!--<div class="alert alert-success">-->
+                        <!--<form class="form-inline">-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="exampleInputName2">商品搜索：</label>-->
+                                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="商品信息">-->
+                            <!--</div>-->
+                            <!--<a><button type="submit" class="btn btn-default">搜索</button></a>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                    <!--</p>-->
+                    <!--<table class="table table-hover" >-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th >商品ID</th>-->
+                            <!--<th>品牌名</th>-->
+                            <!--<th>商品名</th>-->
+                            <!--<th>商品分类</th>-->
+                            <!--<th>建议零售价</th>-->
+                            <!--<th>进价</th>-->
+                            <!--<th>状态</th>-->
+                            <!--<th>库存预警</th>-->
+                            <!--<th >库存</th>-->
+
+                            <!--<th></th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+
+                        <!--<tr th:each="Goods:${session.goods}">-->
+                            <!--<td th:text="${Goods.getGoodId()}">4396</td>-->
+                            <!--<td th:text="${Goods.getBrandId().getBrandChineseName()}">7777</td>-->
+                            <!--<td th:text="${Goods.getGoodName()}">足球</td>-->
+                            <!--<td th:text="${Goods.getClassificationId().getClassifyPath()}"></td>-->
+                            <!--<td th:text="${Goods.getGoodAdvicePrice()}">77</td>-->
+                            <!--<td th:text="${Goods.getGoodPrice()}">7</td>-->
+                            <!--<td th:text="${Goods.getGoodStatus()}">明天</td>-->
+                            <!--<td th:text="${Goods.getGoodWarning()}">明凯</td>-->
+                            <!--<td th:text="${Goods.getGoodStock()}">777</td>-->
+                            <!--<td>-->
+                                <!--<a th:href="@{'/InfoDetail/'+${Goods.getGoodId()}}"><button type="button" class="btn btn-success" >详细信息</button></a>-->
+                                <!--<a th:href="@{'/deleteGood/'+${Goods.getGoodId()}}"><button type="button" class="btn btn-danger btext">下架</button></a>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<nav aria-label="Page navigation">-->
+                            <!--<ul class="pagination">-->
+                                <!--<li>-->
+                                    <!--<a href="#" aria-label="Previous">-->
+                                        <!--<span aria-hidden="true">&laquo;</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li><a href="#">1</a></li>-->
+                                <!--<li><a href="#">2</a></li>-->
+                                <!--<li><a href="#">3</a></li>-->
+                                <!--<li><a href="#">4</a></li>-->
+                                <!--<li><a href="#">5</a></li>-->
+                                <!--<li>-->
+                                    <!--<a href="#" aria-label="Next">-->
+                                        <!--<span aria-hidden="true">&raquo;</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</nav>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                    <!--<nav aria-label="Page navigation">-->
+                        <!--<ul class="pagination">-->
+                            <!--<li>-->
+                                <!--<a href="#" aria-label="Previous">-->
+                                    <!--<span aria-hidden="true">&laquo;</span>-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li><a href="#">1</a></li>-->
+                            <!--<li><a href="#">2</a></li>-->
+                            <!--<li><a href="#">3</a></li>-->
+                            <!--<li><a href="#">4</a></li>-->
+                            <!--<li><a href="#">5</a></li>-->
+                            <!--<li>-->
+                                <!--<a href="#" aria-label="Next">-->
+                                    <!--<span aria-hidden="true">&raquo;</span>-->
+                                <!--</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</nav>-->
+                    <!--<a th:href="@{/addNew}"><button type="button" class="btn btn-info">添加新商品</button></a>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+
+        <!--</div>-->
+
+    <!--</div>-->
+
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var btexts = $('.btext');
+            var gcs = $('.gc');
+            for (var i = 0; i < btexts.length; i++) {
+                if ($(gcs[i]).html() == '已上架') {
+                    $(btexts[i]).html('下架');
+                }
+                if ($(gcs[i]).html() == '已下架') {
+                    $(btexts[i]).html('上架');
+                }
+            }
+        })
+    </script>
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+
+        }
+    </style>
+</head>
+<body class="box1">
+<h3>
+    <a href="mailto:#">品牌商 </a>
+    <small>>>商品信息</small>
+</h3>
+<hr/>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-offset-0 col-lg-12">
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    商品表
+                </div>
+                <div class="panel-body">
+                    <p>
+                    <div class="alert alert-success">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputName2">商品搜索：</label>
+                                <input type="text" class="form-control" id="exampleInputName2" placeholder="商品信息">
+                            </div>
+                            <a><button type="submit" class="btn btn-default">搜索</button></a>
+                        </form>
+                    </div>
+                    </p>
+                    <table class="table table-hover" id="table">
+                        <thead>
+                        <tr>
+                            <th >商品ID</th>
+                            <th>品牌名</th>
+                            <th>商品名</th>
+                            <th>建议零售价</th>
+                            <th>进价</th>
+                            <th>状态</th>
+                            <th>库存预警</th>
+                            <th >库存</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each="Goods:${session.goods}">
+                            <td th:text="${Goods.getGoodId()}">4396</td>
+                            <td th:text="${Goods.getBrandId().getBrandChineseName()}">7777</td>
+                            <td th:text="${Goods.getGoodName()}">足球</td>
+                            <td th:text="${Goods.getGoodAdvicePrice()}">77</td>
+                            <td th:text="${Goods.getGoodPrice()}">7</td>
+                            <td th:text="${Goods.getGoodStatus()}" class="gc">明天</td>
+                            <td th:text="${Goods.getGoodWarning()}">明凯</td>
+                            <td th:text="${Goods.getGoodStock()}">777</td>
+
+                            <td>
+                                <a th:href="@{'/InfoDetail/'+${Goods.getGoodId()}}"><button type="button" class="btn btn-success" >详细信息</button></a>
+                                <a th:href="@{'/deleteGood/'+${Goods.getGoodId()}}"><button type="button" class="btn btn-danger btext">下架</button></a>
+                            </td>
+                        </tr>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a th:href="@{/addNew}"><button type="button" class="btn btn-info">添加新商品</button></a>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

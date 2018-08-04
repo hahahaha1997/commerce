@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+<h3><a href="mailto:#">品牌商</a>
+    <small>>>提现明细</small>
+
+</h3>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>提现流水号</th>
+                    <th>提现时间</th>
+                    <th>提现金额</th>
+                    <th>提现状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="TB:${session.trade_brander}">
+                    <td th:text="${TB.getTradeId()}">1</td>
+                    <td th:text="${TB.getTradeTime()}">2015-05-05</td>
+                    <td th:text="${TB.getTradeNum()}">1000000</td>
+                    <td th:text="${TB.getTradeStatus()}">已完成</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

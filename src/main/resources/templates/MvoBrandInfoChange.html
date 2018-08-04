@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+<h3><a href="mailto:#">品牌商 </a>
+    <small>>><a href="xxx">品牌信息</a></small>
+    <small>>>品牌信息修改</small>
+</h3>
+<hr />
+<div class="col-lg-offset-1 col-lg-10">
+    <form th:action="@{/brandchangesubmit}" th:method="post"  enctype="multipart/form-data">
+        <input type="hidden"  class="form-control"   th:value="${session.brandinfochange.getBrandId()}" name="brandId">
+
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">所属公司</div>
+
+        <div class="panel-body">
+
+                <label class="form-control" th:text="${session.branders.getBranderChineseName()}"  th:value="${session.branders.getBranderChineseName()}"  placeholder="所属公司"  name="branderId.branderChineseName"></label>
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">品牌英文名</div>
+        <div class="panel-body">
+            <input type="text"  class="form-control"  placeholder="品牌英文名" th:value="${session.brandinfochange.getBrandEnglishName()}" name="brandEnglishName">
+        </div>
+    </div>
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading">公司LOGO</div>
+            <div class="panel-body">
+                <input  type="file" class="form-control"   th:value="${session.brandinfochange.getGoodImg() }" name="file">
+            </div>
+        </div>
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">品牌中文名</div>
+        <div class="panel-body">
+
+                <input class="form-control" placeholder="品牌中文名"  th:value="${session.brandinfochange.getBrandChineseName()}" name="brandChineseName">
+
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">创建人</div>
+        <div class="panel-body">
+            <input  class="form-control"  placeholder="创建人" th:value="${session.brandinfochange.getBrandCreatePeo() }" name="brandCreatePeo">
+        </div>
+    </div>
+    <div class="panel panel-danger">
+        <div class="panel-heading">创建时间</div>
+        <div class="panel-body">
+            <input  class="form-control"  placeholder="创建时间" th:value="${session.brandinfochange.getBrandCreateTime()}" name="brandCreateTime">
+        </div>
+    </div>
+
+    <input type="hidden" th:value="${session.brandinfochange.getBrandStatus()}" name="brandStatus">
+
+    <div align="center">
+        <a><button  class="btn btn-danger" >提交修改</button></a>
+    </div>
+        <br>
+    </form>
+</div>
+
+</body>
+</html>

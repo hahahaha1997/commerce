@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        借卖方注册
+    </title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <meta charset="UTF-8"/>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style type="text/css">
+        .box2{
+            background:url("/images/2.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box2">
+<h3><a href="mailto:#">借卖方</a>
+    <small>>>我的新人</small>
+
+</h3>
+<hr />
+
+<form th:action="@{/confirmRegister2}"  th:method="post">
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">登录账号</div>
+        <div class="panel-body">
+            <input type="text" name="borrowerLoginName" class="form-control"  placeholder="登录账号" th:value="${session.borr.getLoginName()}">
+        </div>
+    </div>
+    <div class="panel panel-warning">
+        <div class="panel-heading">登录密码</div>
+        <div class="panel-body">
+            <input type="text" name="borrowerPwd" class="form-control"  placeholder="登录密码" th:value="${session.borr.getPassword()}">
+        </div>
+    </div>
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">钱包密码</div>
+        <div class="panel-body">
+            <input type="text" name="borrowerWalletPwd" class="form-control"  placeholder="钱包密码" >
+        </div>
+    </div>
+
+
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">借卖方名称</div>
+            <div class="panel-body">
+            <input class="form-control" name="borrowerName" >
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">网站描述</div>
+            <div class="panel-body">
+            <input class="form-control" name="borrowerDec" >
+            </div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">联络方式</div>
+            <div class="panel-body">
+            <input class="form-control"  name="borrowerPhone" >
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-body">
+            <div class="panel-heading">网站名称</div>
+            <input class="form-control" name="borrowerWeb" >
+            </div>
+
+        </div>
+        <div  align="center">
+            <a  >
+                <button class="btn btn-danger">注册</button>
+            </a>
+        </div>
+        <br>
+
+
+
+</form>
+
+</body>
+</html>

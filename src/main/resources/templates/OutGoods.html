@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>
+            借卖方查看上架
+        </title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        
+        <meta charset="UTF-8"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var btexts = $('.btext');
+                var gcs = $('.gc');
+                for (var i = 0; i < btexts.length; i++) {
+                    if ($(gcs[i]).html() == '已上架') {
+                        $(btexts[i]).html('下架');
+                    }
+                    if ($(gcs[i]).html() == '未上架'||$(gcs[i]).html() == '已下架') {
+                        $(btexts[i]).html('上架');
+                    }
+                }
+            })
+        </script>
+        <style type="text/css">
+            .box2{
+                background:url("/images/2.jpg");
+                background-repeat: no-repeat;
+            }
+        </style>
+    </head>
+    <body class="box2">
+      <h3><a href="mailto:#">借卖方</a><small>>>查看上架</small></h3>
+        <hr />
+
+
+
+        <div class="container-fluid">
+       
+            <div class="row">
+                <div class="col-lg-offset-0 col-lg-12">
+                   
+
+
+       
+
+                    
+                    <div class="panel panel-primary">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">
+                            已上架商品
+                        </div>
+                        <div>
+                                <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>    &nbsp;&nbsp;&nbsp;商品名</th>
+                                            <th>所属品牌商</th>
+                                            <th>零售价</th>
+
+                                            <th>借卖时间</th>
+
+                                            <th>状态</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr th:each="BG:${session.borrowgood}">
+                                            <td th:text="${BG.getGoodId().getGoodName()}"></td>
+                                            <td th:text="${BG.getBranderId().getBranderChineseName()}"></td>
+                                            <td th:text="${BG.getBorrowGoodPrice()}"></td>
+
+                                            <td th:text="${BG.getBorrowGoodTime()}"></td>
+                                            <td th:text="${BG.getBorrowGoodStatus()}" class="gc" ></td>
+                                            <td>
+
+                                                     <a th:href="@{'/deleteborrowGood/'+${BG.getBorrowGoodId()}}"><button type="button" class="btn btn-danger btext">已下架</button></a>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                
+                        </div>
+                              
+                        
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            
+
+        
+
+
+
+        <script>
+            $('#myTabs a').click(function (e) {
+               e.preventDefault()
+               $(this).tab('show')
+            })
+
+            $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+            $('#myTabs a:first').tab('show') // Select first tab
+            $('#myTabs a:last').tab('show') // Select last tab
+            $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+        </script>
+        </div>
+    </body>
+</html>
+
+
+
+

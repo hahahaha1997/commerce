@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+        <h3><a href="mailto:#">品牌商 </a> <small>>>我的信息</small></h3>
+        <hr />
+        <div class="panel panel-primary">
+            <div class="panel-heading" >公司中文名</div>
+            <div class="panel-body" th:text="${session.branders.getBranderChineseName()}">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading" >公司英文名</div>
+            <div class="panel-body" th:text="${session.branders.getBranderEnglishName()}">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading" >公司简介</div>
+            <div class="panel-body" th:text="${session.branders.getBranderIntorduction()}">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+        <div class="panel-heading" >创建时间</div>
+        <div class="panel-body" th:text="${session.branders.getBreanderCreatTime()}">
+            Panel content
+        </div>
+        </div>
+
+        <div class="panel panel-danger">
+        <div class="panel-heading" >联系方式</div>
+        <div class="panel-body" th:text="${session.branders.getBranderPhone()}">
+            Panel content
+        </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading" >公司法人</div>
+            <div class="panel-body" th:text="${session.branders.getBranderLawMan()}">
+                Panel content
+            </div>
+        </div>
+        <div  align="center">
+        <a  th:href="@{'/updateBrander/'+${session.branders.getBranderId()}}">
+            <button class="btn btn-danger">修改信息</button>
+        </a>
+        </div>
+          <br>
+</body>
+</html>

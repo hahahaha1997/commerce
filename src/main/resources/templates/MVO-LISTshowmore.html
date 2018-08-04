@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .box1{
+            background:url("/images/1.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="box1">
+
+
+<h3><a href="mailto:#">品牌商</a>
+    <small>>>我的订单</small>
+    <small>>>订单明细</small>
+</h3>
+<hr />
+<form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"  >
+
+                <dl class="dl-horizontal">
+                    <dt><h2>订单ID</h2></dt>
+                    <dd><h2 th:text="${session.nutit_brand}"></h2></dd>
+                </dl>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th >商品名称</th>
+                        <th >商品单价</th>
+                        <th>商品数量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="BOR:${session.orderinfo_brander}">
+                        <td th:text="${BOR.getGoodId().getGoodName()}">开挂挂件</td>
+                        <td th:text="${BOR.getGoodFormPrice()}">5000000</td>
+                        <td th:text="${BOR.getGoodFormNum()}">29</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <blockquote class="blockquote-reverse">
+                    <h3>总价:</h3>
+                    <h3 th:text="${session.totalprice_brand}">6000000</h3>
+                </blockquote>
+
+                <blockquote class="blockquote-reverse">
+                    <h3>下单时间:</h3>
+                    <h3 th:text="${session.createtime_brand}">2015-05-05</h3>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
